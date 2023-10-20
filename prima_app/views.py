@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 
 # Create your views here.
@@ -10,6 +11,12 @@ def lista(request):
 def chisiamo(request):
     return render(request,"chisiamo.html")
 def variabili(request):
-    return render(request,"variabili.html")
+    context={
+        'var1': 100,
+        'var2': 200,
+        'var3': 300
+    }
+    return render(request,"variabili.html",context)
 def index(request):
+    
     return render(request,"index.html")
