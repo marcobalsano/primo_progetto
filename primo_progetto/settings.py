@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'news',
     'prima_app',
     'seconda_app',
-    'news'
+    
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'primo_progetto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'prima_app/templates'),os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'seconda_app/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'prima_app/templates'),os.path.join(BASE_DIR, 'seconda_app/templates'),os.path.join(BASE_DIR, 'news/templates'),os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
