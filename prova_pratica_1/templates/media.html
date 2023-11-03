@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}  |media {% endblock title %} 
+{% block content %}
+
+<p>{{array}}</p>
+{% if media < 6 %}
+    <p><i style = "color: red"> {{media}}</i></p>
+{% else %}
+    <p><i style = "color: green"> {{media}}</i></p>
+{% endif %}
+{% if media == 6 %}
+    <p><i style = "color: black"> {{media}}</i></p>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} |voti {% endblock title %} 
+{% block content %}
+
+<table border=1>
+    <th>studente</th>
+    <th>voto</th>
+    {% for key, value in dizionario.items %}
+        <tr><td>{{ key }}</td><td> {{value}}</td></tr>
+    {%endfor%}
+</table>
+{% endblock content %}
