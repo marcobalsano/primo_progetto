@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+    lista articoli
+{% endblock title %}
+{% block content %}
+    {% if pk %}
+        <h1>articoli di {{articoli.0.giornalista}}</h1>
+        {% for articolo in articoli %}
+            <b>titolo:</b> {{ articolo.titolo }}<br>
+            <b>contenuto:</b> {{ articolo.contenuto }}<br>            
+            <hr>
+        {% endfor %}
+    {% else %} 
+        <h1>tutti gli articoli</h1>
+        {% for articolo in articoli %}
+            <b>titolo: </b>{{ articolo.titolo }}<br>
+            <b>contenuto: </b> {{ articolo.contenuto }}<br>
+            <b>autore: </b> {{articolo.giornalista}}<br>
+            <hr>
+        {% endfor %}
+ {% endif %}
+{% endblock content %}      
