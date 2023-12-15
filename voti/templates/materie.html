@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %} {{block.super}}  |index root {% endblock title %} 
+{% block content %}
+    <h2>materie:</h2><br>
+    {% for x in materia%}
+        <i>{{ forloop.counter }} </i> : {{ x }}<br> 
+    {% endfor %}
+
+{% endblock content %}

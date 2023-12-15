@@ -28,4 +28,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('seconda_app/',include("seconda_app.urls", namespace="seconda_app")),
     path('news/', include("news.urls", namespace="news")),
+    path('voti/', include("voti.urls", namespace="voti")),
 ]

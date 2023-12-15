@@ -17,6 +17,8 @@ def variabili(request):
         'var3': 300
     }
     return render(request,"variabili.html",context)
+
+def voti(request):
+    return render (request,"indexVoti.html")
 def index(request):
-    
     return render(request,"index.html")

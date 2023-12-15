@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %} {{block.super}}  |index root {% endblock title %} 
+{% block content %}
+    <h2>medie:</h2><br>
+    {% for key, value in diz.items %}
+        <li>{{key}} {{medie}}</li><br>
+    {%endfor%}
+{% endblock content %}

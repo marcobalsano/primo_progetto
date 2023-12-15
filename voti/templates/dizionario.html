@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} {{block.super}}  |index root {% endblock title %} 
+{% block content %}
+    <h2>dizionario:</h2><br>
+    {% for key, value in diz.items %}
+        <li>{{key}}<br></li>
+        {% for x, y, z in value%}
+            <ul>{{x}}, {{y}}, {{z}} <br></ul>
+        {%endfor%}
+    {%endfor%}
+
+{% endblock content %}
