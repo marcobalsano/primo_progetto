@@ -1,7 +1,7 @@
 from datetime import datetime
 from xmlrpc.client import _datetime
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from .models import Articolo, Giornalista
 import datetime
 
@@ -154,3 +154,58 @@ def queryBase(request):
 
 
     return render(request, 'query.html', context)
+
+def giornalisti_list_api(request):
+    giornalisti=Giornalista.objects.all() # [:30]
+    data = {'giornalisti': list(giornalisti.values("pk", "nome", "cognome"))}
+    response = JsonResponse(data)
+    return response
+
+def giornalista_api(request,pk):
+    try:
+        giornalista=Giornalista.objects.get(pk=pk)
+        data={'giornalista':{
+                "nome":giornalista.nome,
+                "cognome:":giornalista.cognome,
+            }
+        }
+        response = JsonResponse(data)
+    except Giornalista.DoesNotExist:
+        response=JsonResponse({
+            "error":{
+                "code":404,
+                "message":"Giornalista non trovato"
+            }},
+            status=404)
+        
+
+    return response  
+    
+def articoli_list_api(request):
+    articoli = Articolo.objects.all()
+    data = {'articoli': list(articoli.values("pk", "titolo", "contenuto", "data", "visualizzazioni"))}
+    return JsonResponse(data)
+
+def articolo_api(request, pk):
+    try:
+        articolo = Articolo.objects.get(pk=pk)
+        data = {
+            'articolo': {
+                "titolo": articolo.titolo,
+                "contenuto": articolo.contenuto,
+                "data": articolo.data,
+                "visualizzazioni": articolo.visualizzazioni,
+                "autore": {
+                    "nome": articolo.giornalista.nome,
+                    "cognome": articolo.giornalista.cognome
+                }
+            }
+        }
+        response = JsonResponse(data)
+    except Articolo.DoesNotExist:
+        response = JsonResponse({
+            "error": {},
+            "code": 404,
+            "message": "Articolo non trovato"
+        }, status=404)
+    return response
