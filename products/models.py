@@ -1,4 +1,5 @@
 from django.db import models
+import PIL
 
 class Manufacturer (models.Model):
     name = models.CharField(max_length=120)
